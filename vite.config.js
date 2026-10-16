@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/CV-PORTAFOLIO/",
   plugins: [react(), tailwindcss()],
   // Include the portal dependency before lazy demos are requested. Discovering
   // it later can invalidate optimized imports in an already open browser tab.

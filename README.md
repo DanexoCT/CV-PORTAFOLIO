@@ -60,6 +60,14 @@ npm run preview
 
 En PowerShell, si la política de ejecución bloquea `npm`, puedes usar `npm.cmd` en los mismos comandos.
 
+## Publicar en GitHub Pages
+
+El sitio usa la ruta base `/CV-PORTAFOLIO/`. En el repositorio, selecciona **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+
+El flujo `.github/workflows/deploy.yml` instala las dependencias, ejecuta las validaciones, compila y publica la carpeta `dist` con cada push a `main`. También se puede iniciar manualmente desde la pestaña **Actions**.
+
+GitHub Pages debe servir el resultado de la compilación; el `index.html` de la raíz es para desarrollo y no funciona publicado directamente.
+
 ## Validaciones
 
 ```bash
