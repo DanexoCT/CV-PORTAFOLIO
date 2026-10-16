@@ -1,5 +1,6 @@
 ﻿import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import FloatingShapes from "./components/FloatingShapes";
 import MagneticButtons from "./components/MagneticButtons";
 import About from "./components/About";
 import Experience from "./components/Experience";
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <>
       <MouseGlow />
+      <FloatingShapes />
       <MagneticButtons />
       <ScrollEffects />
       <a className="skip-link" href="#contenido">

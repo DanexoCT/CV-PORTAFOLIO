@@ -1,0 +1,19 @@
+.floating-shapes-host {
+  position: relative;
+  isolation: isolate;
+}
+.floating-shapes-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  border-radius: inherit;
+}
+@media print, (forced-colors: active) {
+  .floating-shapes-canvas {
+    display: none;
+  }
+}
