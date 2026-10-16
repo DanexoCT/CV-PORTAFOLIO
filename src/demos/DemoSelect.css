@@ -1,0 +1,144 @@
+.frontend-demos .demo-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid #ffffff20;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff04, transparent), #1b1822;
+  box-shadow: inset 0 1px 0 #ffffff05;
+  color: #d5c9e2;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.demo-select-trigger > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.demo-select-trigger > svg {
+  flex-shrink: 0;
+  color: #a897bf;
+  transition: transform 0.2s;
+}
+.demo-select-trigger[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
+.frontend-demos .demo-select-trigger[aria-expanded="true"] {
+  border-color: #bca3ed99;
+  background: #241d30;
+  box-shadow:
+    0 0 0 3px #bca3ed0c,
+    inset 0 1px 0 #ffffff06;
+}
+.frontend-demos .demo-select-trigger[aria-invalid="true"] {
+  border-color: #d9a19799;
+}
+.demo-select-menu {
+  position: fixed;
+  z-index: 1000;
+  isolation: isolate;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #c9ade73d;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #ffffff07, transparent 55%), #201a2aef;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 16px 48px #0008,
+    inset 0 1px 0 #ffffff0b;
+  color: #d7cbe4;
+  color-scheme: dark;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  animation: demo-select-enter 0.16s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: #bca3ed55 transparent;
+}
+.demo-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.demo-select-option > svg {
+  flex-shrink: 0;
+  color: #c9a8f0;
+}
+.demo-select-option[aria-selected="true"] {
+  color: #eadbfb;
+}
+.demo-select-option.is-active {
+  background: linear-gradient(110deg, #bca3ed23, #bca3ed0d);
+  border-color: #bca3ed26;
+  color: #f0e4ff;
+}
+.board-task-state .demo-select-trigger {
+  border-color: transparent;
+  background: transparent;
+  font-size: 11px;
+  padding: 8px;
+}
+.interaction-speed .demo-select-trigger {
+  min-width: 105px;
+}
+.demo-sort .demo-select-trigger {
+  min-width: 144px;
+}
+.board-create > label:has(.demo-select-trigger) {
+  min-width: 100px;
+}
+.board-priority-filter .demo-select-trigger {
+  min-width: 110px;
+}
+.brief-fields .demo-select-trigger {
+  min-height: 46px;
+}
+@keyframes demo-select-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 650px) {
+  .frontend-demos .demo-select-trigger,
+  .demo-select-option {
+    font-size: 14px;
+    min-height: 46px;
+  }
+  .board-priority-filter .demo-select-trigger {
+    width: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-select-menu {
+    animation: none;
+  }
+  .demo-select-option,
+  .demo-select-trigger > svg {
+    transition: none;
+  }
+}

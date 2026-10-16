@@ -1,0 +1,121 @@
+.project-gallery {
+  width: min(1050px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 24px;
+  overflow-y: auto;
+  color: #eeedf3;
+  background: #17171fee;
+  border: 1px solid #ffffff24;
+  border-radius: 24px;
+  box-shadow: 0 28px 100px #0009;
+  backdrop-filter: blur(22px);
+  animation: gallery-enter 0.25s ease-out;
+}
+.project-gallery::backdrop {
+  background: #050509c7;
+  backdrop-filter: blur(8px);
+}
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.gallery-header h2 {
+  font-size: clamp(20px, 4vw, 30px);
+  margin-top: 8px;
+}
+.project-gallery button {
+  color: inherit;
+  background: #ffffff06;
+  border: 1px solid #ffffff1c;
+  border-radius: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.project-gallery button:hover,
+.project-gallery button[aria-pressed="true"] {
+  background: #b69ae21f;
+  border-color: #b69ae26b;
+}
+.gallery-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.gallery-figure {
+  margin: 0;
+}
+.gallery-image {
+  background: #0e0e15;
+  border: 1px solid #ffffff13;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.gallery-image img {
+  display: block;
+  width: 100%;
+  max-height: 62dvh;
+  object-fit: contain;
+}
+.gallery-figure figcaption {
+  padding: 18px 0;
+}
+.gallery-figure strong {
+  font-size: 14px;
+}
+.gallery-figure p,
+.gallery-note {
+  color: #b8b5c5;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.gallery-controls > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.gallery-note {
+  margin-top: 18px;
+  font-size: 12px;
+}
+@keyframes gallery-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 520px) {
+  .project-gallery {
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .gallery-controls button {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-gallery {
+    animation: none;
+  }
+}

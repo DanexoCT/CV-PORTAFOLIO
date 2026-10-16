@@ -1,0 +1,109 @@
+.animated-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+}
+.animated-collapse.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.animated-collapse-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+.smooth-height {
+  overflow: clip;
+}
+.smooth-height-content {
+  display: flow-root;
+}
+.animated-details-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.animated-details-chevron {
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.animated-details-toggle[aria-expanded="true"] .animated-details-chevron {
+  transform: rotate(180deg);
+}
+.frontend-demos .animated-details-toggle:focus-visible {
+  outline: 2px solid #bca3ed;
+  outline-offset: 3px;
+}
+.frontend-demos .demo-explanation .animated-collapse-clip > p {
+  padding: 0 4px 8px;
+}
+.filters button,
+.demo-tabs button,
+.interaction-picker button,
+.demo-filters button,
+.demo-width-switch button {
+  position: relative;
+  isolation: isolate;
+}
+.selection-pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid #bca3ed4a;
+  border-radius: inherit;
+  background: linear-gradient(130deg, #bca3ed22, #bca3ed0c);
+  box-shadow:
+    inset 0 1px 0 #ffffff06,
+    0 3px 14px #0001;
+}
+.project-toolbar .filters button[aria-pressed="true"],
+.frontend-demos .demo-tabs button[aria-selected="true"],
+.frontend-demos .interaction-picker button[aria-pressed="true"],
+.frontend-demos .demo-filters button[aria-pressed="true"],
+.frontend-demos .demo-width-switch button[aria-pressed="true"] {
+  background: transparent;
+  border-color: transparent;
+}
+.project-toolbar .filters .selection-pill {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(130deg, #bca3ed22, #bca3ed0c);
+}
+.frontend-demos .demo-panel:not([hidden]),
+.frontend-demos [id^="interaction-"]:not([hidden]) {
+  animation: interface-panel-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes interface-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animated-collapse,
+  .animated-details-chevron {
+    transition: none;
+  }
+  .frontend-demos .demo-panel:not([hidden]),
+  .frontend-demos [id^="interaction-"]:not([hidden]) {
+    animation: none;
+  }
+}

@@ -1,0 +1,206 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101014" />
+    <meta
+      name="description"
+      content="Dan Valle, desarrollador de software en Guadalajara. Experiencia, proyectos y formación en desarrollo frontend, aplicaciones web y automatización de procesos."
+    />
+    <meta
+      property="og:title"
+      content="Dan Valle · Desarrollo web y automatización"
+    />
+    <meta
+      property="og:description"
+      content="Proyectos, experiencia profesional y tecnologías de Dan Alejandro Valle Mendoza. Desarrollo frontend, aplicaciones web y automatización."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <title>Dan Valle · Desarrollo web y automatización</title>
+    <link
+      rel="preload"
+      as="image"
+      type="image/svg+xml"
+      href="%BASE_URL%tech/react.svg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/svg+xml"
+      href="%BASE_URL%tech/javascript.svg"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/svg+xml"
+      href="%BASE_URL%tech/laravel.svg"
+    />
+    <style id="site-loader-styles">
+      html {
+        background: #101014;
+      }
+      .site-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(
+          ellipse at 50% 42%,
+          #292033 0%,
+          #101014 65%
+        );
+        color: #ece7f2;
+        font-family: "Segoe UI", Arial, sans-serif;
+        opacity: 0;
+        animation: loader-appear 0.25s ease 0.16s forwards;
+      }
+      .loader-content {
+        width: min(270px, calc(100% - 48px));
+        text-align: center;
+      }
+      .loader-symbol {
+        display: grid;
+        place-items: center;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 28px;
+        border: 1px solid #c4a4ee38;
+        border-radius: 23px;
+        background: linear-gradient(145deg, #ffffff0d, #b49af608);
+        box-shadow:
+          inset 0 1px 0 #ffffff20,
+          0 15px 50px #0003;
+        color: #c6a9f4;
+        animation: loader-breathe 2.8s ease-in-out infinite;
+      }
+      .loader-caption {
+        margin: 0 0 12px;
+        color: #b6a2c7;
+        font:
+          9px Consolas,
+          monospace;
+        letter-spacing: 2px;
+      }
+      .loader-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: -0.4px;
+      }
+      .loader-track {
+        position: relative;
+        overflow: hidden;
+        height: 2px;
+        margin-top: 25px;
+        border-radius: 2px;
+        background: #b49af61c;
+      }
+      .loader-track::after {
+        content: "";
+        position: absolute;
+        inset-block: 0;
+        left: -40%;
+        width: 40%;
+        background: linear-gradient(90deg, transparent, #c6a9f4, transparent);
+        animation: loader-travel 1.6s ease-in-out infinite;
+      }
+      .site-loader.is-ready {
+        animation: loader-leave 0.18s ease forwards;
+      }
+      @keyframes loader-appear {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes loader-leave {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+      @keyframes loader-breathe {
+        50% {
+          transform: translateY(-3px);
+          box-shadow:
+            inset 0 1px 0 #ffffff30,
+            0 10px 45px #b49af615;
+        }
+      }
+      @keyframes loader-travel {
+        to {
+          left: 100%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .site-loader {
+          opacity: 1;
+          animation: none;
+        }
+        .loader-symbol,
+        .loader-track::after {
+          animation: none;
+        }
+        .loader-track::after {
+          left: 30%;
+        }
+      }
+      @media print {
+        .site-loader {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-loader" class="site-loader" role="status" aria-live="polite">
+      <div class="loader-content">
+        <span class="loader-symbol" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="34"
+            height="34"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 20" />
+          </svg>
+        </span>
+        <p class="loader-caption">CV DE DAN VALLE</p>
+        <p class="loader-title">Cargando sitio</p>
+        <div class="loader-track" aria-hidden="true"></div>
+      </div>
+    </div>
+    <noscript
+      ><style>
+        .site-loader {
+          display: none;
+        }
+      </style>
+      <p
+        style="
+          padding: 32px;
+          color: #efedf3;
+          background: #101014;
+          font-family: sans-serif;
+        "
+      >
+        Activa JavaScript para explorar el portafolio. Contacto:
+        <a href="mailto:danexo@outlook.com" style="color: #b49af6"
+          >danexo@outlook.com</a
+        >.
+      </p></noscript
+    >
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

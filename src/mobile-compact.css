@@ -1,0 +1,605 @@
+/* Compact phone layouts; desktop dimensions and touch targets stay intact. */
+@media (max-width: 650px) {
+  .site-footer .footer-signature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+  }
+  .site-footer .footer-craft,
+  .site-footer .footer-back-top {
+    width: min(100%, 320px);
+    min-width: 0;
+    margin-inline: auto;
+  }
+  .site-footer .footer-bottom {
+    align-items: center;
+    text-align: center;
+  }
+  #inicio.hero-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #inicio .hero-copy {
+    min-width: 0;
+  }
+  #inicio .hero-art {
+    width: 100%;
+    max-width: 350px;
+    height: 270px;
+    margin: 22px auto 0;
+    transform: none;
+  }
+  #inicio .art-grid {
+    inset: 0;
+  }
+  #inicio .art-label {
+    top: 0;
+    left: 18px;
+    font-size: 6px;
+  }
+  #inicio .code-window {
+    top: 26px;
+    left: 12px;
+    right: 12px;
+    border-radius: 9px;
+  }
+  #inicio .window-bar {
+    height: 28px;
+    padding-inline: 10px;
+    font-size: 7px;
+  }
+  #inicio .window-dots {
+    gap: 4px;
+  }
+  #inicio .window-dots > i {
+    width: 5px;
+    height: 5px;
+  }
+  #inicio .code-body {
+    padding: 12px 10px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  #inicio .code-muted {
+    font-size: 8px;
+    margin-right: 6px;
+  }
+  #inicio .terminal-line {
+    font-size: 8px;
+    margin-top: 10px;
+  }
+  #inicio .floating-tag,
+  #inicio .workflow-preview {
+    display: none;
+  }
+  #inicio .orbit-one {
+    width: 90%;
+    height: 210px;
+  }
+  #inicio .orbit-two {
+    width: 68%;
+    height: 250px;
+  }
+  #inicio .art-caption {
+    bottom: 4px;
+    left: 18px;
+    right: 10px;
+    font-size: 6px;
+    letter-spacing: 0.3px;
+  }
+  #inicio .hero-bottom {
+    margin-top: 8px;
+    padding-block: 16px;
+    gap: 10px;
+    min-width: 0;
+  }
+  .site-header .navigation {
+    min-height: 58px;
+    padding: 6px 10px;
+  }
+  .site-header .nav-brand {
+    gap: 8px;
+  }
+  .site-header .nav-brand .brand-terminal {
+    width: 30px;
+    height: 30px;
+  }
+  .site-header .nav-brand .brand-name {
+    font-size: 20px;
+  }
+  .site-header .menu-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    border-radius: 8px;
+  }
+  .site-header .menu-toggle > svg {
+    width: 18px;
+    height: 18px;
+  }
+  .site-header .menu-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+  }
+  .site-header .navigation .nav-links.is-open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    gap: 6px;
+    padding: 10px;
+    border-radius: 20px;
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .site-header .navigation .nav-links > a {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 9px;
+    gap: 8px;
+    font-size: 11px;
+    border-radius: 11px;
+  }
+  .site-header .navigation .nav-links > a > svg {
+    width: 14px;
+    height: 14px;
+  }
+  .site-header .navigation .nav-links .nav-contact {
+    margin: 0;
+    padding: 8px 10px;
+    justify-content: center;
+    gap: 8px;
+  }
+  .site-header .navigation .nav-contact-icon {
+    width: 25px;
+    height: 25px;
+  }
+  #demos .section-heading {
+    margin-bottom: 20px;
+    gap: 14px;
+  }
+  #demos .section-heading h2 {
+    font-size: 28px;
+  }
+  #demos .section-heading > p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  #demos .frontend-demos {
+    border-radius: 16px;
+  }
+  #demos .demo-panel {
+    padding: 14px 12px;
+  }
+  #demos .demo-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    padding: 7px;
+  }
+  #demos .demo-tabs button {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    min-height: 52px;
+    padding: 7px 2px;
+    font-size: 10px;
+  }
+  #demos .demo-tabs button > svg {
+    width: 15px;
+    height: 15px;
+  }
+  #demos .demo-toolbar {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  #demos .demo-toolbar h3 {
+    font-size: 20px;
+    margin: 6px 0;
+    line-height: 1.3;
+  }
+  #demos .demo-toolbar p {
+    font-size: 12px;
+    line-height: 1.65;
+  }
+  #demos .demo-toolbar .demo-reset {
+    align-self: flex-end;
+    min-height: 44px;
+    padding: 8px 10px;
+    margin-top: -4px;
+  }
+  #demos .demo-label {
+    font-size: 8px;
+    letter-spacing: 0.11em;
+  }
+  #demos .demo-search-row {
+    gap: 8px;
+  }
+  #demos .demo-filters {
+    gap: 5px;
+    margin-top: 8px;
+  }
+  #demos .demo-filters button {
+    flex: 1;
+    padding: 8px 5px;
+    font-size: 10px;
+    min-height: 44px;
+  }
+  #demos .demo-results-bar {
+    gap: 8px;
+    min-height: 44px;
+  }
+  #demos .demo-result-count {
+    font-size: 10px;
+    margin: 10px 0;
+  }
+  #demos .demo-selection-shortcut {
+    padding: 8px;
+    font-size: 10px !important;
+  }
+  #demos .demo-product-grid {
+    gap: 8px;
+  }
+  #demos .demo-product-visual {
+    height: 48px;
+    flex-shrink: 0;
+  }
+  #demos .demo-product-visual > svg {
+    width: 25px;
+    height: 25px;
+  }
+  #demos .demo-product-info {
+    padding: 8px;
+  }
+  #demos .demo-product h4 {
+    min-height: 32px;
+    margin: 4px 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  #demos .demo-product p {
+    display: none;
+  }
+  #demos .demo-product-bottom {
+    padding-top: 4px;
+  }
+  #demos .demo-product-bottom strong {
+    font-size: 13px;
+  }
+  #demos .demo-skeleton {
+    height: 158px;
+  }
+  #demos .demo-catalog-layout,
+  #demos .demo-motion-layout {
+    gap: 16px;
+  }
+  #demos .demo-selection {
+    padding: 12px;
+    border-radius: 11px;
+  }
+  #demos .demo-selection-heading {
+    padding-bottom: 10px;
+  }
+  #demos .demo-cart-empty {
+    padding: 12px 8px;
+    gap: 6px;
+  }
+  #demos .demo-cart-empty > svg {
+    display: none;
+  }
+  #demos .demo-cart-empty p {
+    font-size: 11px;
+  }
+  #demos .demo-selection-total {
+    margin-top: 10px;
+  }
+  #demos .demo-selection-total strong {
+    font-size: 20px;
+  }
+  #demos .demo-cart-items li {
+    padding: 10px 0;
+  }
+  #demos .demo-simulation {
+    margin-top: 12px;
+  }
+  #demos .demo-empty {
+    min-height: 190px;
+    gap: 9px;
+    padding: 20px 14px;
+  }
+  #demos .demo-explanation {
+    margin-top: 16px;
+    padding-top: 10px;
+  }
+  #demos .demo-explanation p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  #demos .demo-placeholder {
+    min-height: 120px;
+    padding: 22px 16px;
+    gap: 10px;
+  }
+  #demos .interaction-picker {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    gap: 6px;
+  }
+  #demos .interaction-picker button {
+    min-height: 44px;
+  }
+  #demos .demo-motion-stage {
+    min-height: 245px;
+    padding: 18px 12px;
+  }
+  #demos .demo-interactive-card {
+    padding: 18px;
+  }
+  #demos .demo-preview-icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 16px;
+    border-radius: 11px;
+  }
+  #demos .demo-preview-icon > svg {
+    width: 20px;
+  }
+  #demos .demo-interactive-card h4 {
+    font-size: 20px;
+  }
+  #demos .demo-preview-tags {
+    margin-top: 16px;
+  }
+  #demos .demo-motion-controls {
+    padding: 16px;
+  }
+  #demos .demo-motion-controls h4 {
+    margin-bottom: 16px;
+  }
+  #demos .demo-control-label {
+    margin: 16px 0 10px;
+  }
+  #demos .demo-motion-controls p {
+    margin-top: 14px;
+  }
+  #demos .magnetic-stage {
+    min-height: 225px;
+  }
+  #demos .magnetic-hit-area {
+    min-height: 180px;
+  }
+  #demos .magnetic-orbit {
+    width: 170px;
+    height: 170px;
+  }
+  #demos .magnetic-button {
+    min-width: 185px;
+    min-height: 54px;
+    padding: 14px 18px;
+    gap: 9px;
+    font-size: 13px;
+  }
+  #demos .magnetic-stage-label {
+    bottom: 14px;
+    font-size: 8px;
+  }
+  #demos .expanding-gallery {
+    gap: 8px;
+  }
+  #demos .expanding-scene {
+    min-height: 78px;
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+  #demos .scene-title {
+    font-size: 18px;
+  }
+  #demos .scene-description {
+    font-size: 11px;
+    line-height: 1.65;
+  }
+  #demos .interaction-status {
+    font-size: 11px;
+    margin-top: 10px;
+    min-height: 0;
+  }
+  #demos .comparison-stage {
+    height: 285px;
+    border-radius: 12px;
+  }
+  #demos .comparison-ui {
+    padding: 28px 16px;
+  }
+  #demos .comparison-nav > span {
+    font-size: 17px;
+  }
+  #demos .comparison-main {
+    margin-top: 24px;
+  }
+  #demos .comparison-main strong {
+    font-size: 28px;
+    margin: 8px 0;
+  }
+  #demos .comparison-main p {
+    font-size: 10px;
+    max-width: 175px;
+  }
+  #demos .comparison-cta {
+    margin-top: 12px;
+    padding: 8px 11px;
+  }
+  #demos .comparison-bottom {
+    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    padding-top: 10px;
+  }
+  #demos .comparison-presets {
+    gap: 5px;
+    margin-top: 12px;
+  }
+  #demos .comparison-presets button {
+    padding: 8px;
+    font-size: 10px;
+  }
+  #demos .brief-sidebar {
+    padding: 14px;
+  }
+  #demos .brief-sidebar > .demo-label {
+    margin-bottom: 12px;
+  }
+  #demos .brief-sidebar h4 {
+    display: none;
+  }
+  #demos .brief-sidebar ol {
+    gap: 6px;
+  }
+  #demos .brief-sidebar li {
+    gap: 6px;
+  }
+  #demos .brief-sidebar li > span {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font-size: 9px;
+  }
+  #demos .brief-sidebar li strong {
+    font-size: 11px;
+  }
+  #demos .brief-content {
+    padding: 16px 14px;
+  }
+  #demos .brief-content > form {
+    min-height: 0;
+  }
+  #demos .brief-step-heading h4 {
+    margin: 7px 0 18px;
+    font-size: 19px;
+  }
+  #demos .brief-fields {
+    gap: 14px;
+  }
+  #demos .brief-fields label {
+    gap: 7px;
+  }
+  #demos .brief-fields textarea {
+    height: 96px;
+    min-height: 84px;
+  }
+  #demos .brief-actions {
+    padding-top: 20px;
+  }
+  #demos .brief-success {
+    min-height: 230px;
+    padding: 12px;
+    gap: 14px;
+  }
+  #demos .brief-success h4 {
+    font-size: 22px;
+  }
+  #demos .brief-success p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  #demos .board-summary {
+    gap: 9px;
+    padding: 10px;
+    margin-bottom: 14px;
+  }
+  #demos .board-summary > span {
+    font-size: 11px;
+    gap: 5px;
+  }
+  #demos .board-create {
+    margin-bottom: 12px;
+  }
+  #demos .demo-board {
+    gap: 10px;
+  }
+  #demos .board-column {
+    padding: 10px;
+    border-radius: 11px;
+  }
+  #demos .board-column h4 {
+    margin: 2px 0 10px;
+  }
+  #demos .board-task-list {
+    min-height: 0;
+    gap: 8px;
+  }
+  #demos .board-task {
+    padding: 10px;
+  }
+  #demos .board-task h5 {
+    margin: 8px 0;
+    font-size: 12px;
+  }
+  #demos .board-task-state {
+    padding-top: 4px;
+  }
+  #demos .board-empty {
+    padding: 12px 6px;
+  }
+  #demos .board-announcement {
+    margin-top: 10px;
+    min-height: 0;
+  }
+  #proyectos .project-card .project-visual {
+    height: 155px;
+    min-height: 0;
+  }
+  #proyectos .project-info {
+    padding: 18px 16px 0;
+  }
+  #proyectos .project-info h3 {
+    font-size: 20px;
+  }
+  #proyectos .project-description {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+  #experiencia .experience-row {
+    padding: 18px 16px;
+    gap: 16px;
+  }
+  #experiencia .experience-body h3 {
+    font-size: 23px;
+  }
+  #experiencia .experience-body h4 {
+    margin-top: 12px;
+  }
+  #experiencia .experience-body ul {
+    margin-top: 14px;
+    line-height: 1.75;
+  }
+  #experiencia .experience-body > .tags {
+    margin-top: 16px;
+  }
+  #tecnologias .stack-item {
+    padding: 18px;
+  }
+  #tecnologias .stack-item h3 {
+    margin-bottom: 16px;
+  }
+  #tecnologias .stack-icon {
+    margin-bottom: 16px;
+  }
+  #tecnologias .stack-tools > .tech-tile {
+    min-height: 68px;
+  }
+  #sobre-mi .about-copy .about-education {
+    padding: 16px 14px;
+    margin-block: 20px;
+  }
+  #sobre-mi .about-process-node {
+    padding: 16px 11px 12px;
+    gap: 11px;
+  }
+}

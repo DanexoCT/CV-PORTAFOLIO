@@ -1,0 +1,316 @@
+.about-section .about-lead {
+  min-width: 0;
+}
+.about-section .avatar-monogram {
+  flex-shrink: 0;
+  isolation: isolate;
+}
+.about-section .avatar-monogram::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px dashed #bda0e52e;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-section .avatar-monogram::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid transparent;
+  border-top-color: #c9a8ee88;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.about-section .avatar-monogram > span {
+  width: 7px;
+  height: 7px;
+  background: #a8c1ac;
+  border: 2px solid #282131;
+  border-radius: 50%;
+}
+.about-process {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 38px;
+  max-width: 390px;
+}
+.about-process::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 34px;
+  height: 1px;
+  z-index: -1;
+  background: linear-gradient(90deg, #bda0e51a, #cdb3ed99, #bda0e51a);
+  background-size: 200% 100%;
+}
+.about-process-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 21px 16px 16px;
+  background: linear-gradient(145deg, #bca3ed08, transparent), #19161e;
+  border: 1px solid #bca3ed22;
+  border-radius: 14px;
+  min-width: 0;
+  transition:
+    translate 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.about-process-node > svg {
+  color: #c0a3df;
+  transition: transform 0.35s;
+}
+.about-process-node > span {
+  color: #bcb0c9;
+  font-size: 11px;
+}
+.about-process-node > small {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #756282;
+  font:
+    8px/1.5 Consolas,
+    monospace;
+}
+.about-copy .about-education {
+  position: relative;
+  padding: 24px 20px;
+  border: 1px solid #bca3ed29;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #bca3ed08, transparent 70%), #18151d;
+  transition:
+    transform 0.4s,
+    border-color 0.3s,
+    box-shadow 0.4s;
+}
+.about-copy .about-education > svg {
+  flex-shrink: 0;
+  transition: transform 0.35s;
+}
+.about-education > div {
+  min-width: 0;
+}
+.about-copy .about-education .education-tsu {
+  position: relative;
+  padding-left: 12px;
+  color: #a9b8a9;
+}
+.about-copy .education-tsu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #a9c1a5;
+  box-shadow: 0 0 9px #a9c1a533;
+}
+.contact-section .contact-socials {
+  gap: 10px;
+}
+.contact-section .contact-socials > :is(a, button) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 48px;
+  padding: 13px 14px;
+  border: 1px solid #bca3ed19;
+  border-radius: 11px;
+  background: #ffffff02;
+  transition:
+    border-color 0.3s,
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+.contact-section .contact-socials > :is(a, button)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, #bca3ed16, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.contact-section .contact-socials > :is(a, button)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c5a4e9, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  pointer-events: none;
+}
+.contact-section .contact-socials svg {
+  flex-shrink: 0;
+  transition:
+    transform 0.3s,
+    color 0.3s;
+}
+.contact-section .contact-socials > :is(a, button):is(:hover, :focus-visible) {
+  border-color: #bca3ed66;
+  color: #ead9fc;
+  box-shadow: 0 8px 24px #0002;
+}
+.contact-section
+  .contact-socials
+  > :is(a, button):is(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+.contact-section
+  .contact-socials
+  > :is(a, button):is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+.contact-section .email-row > a {
+  position: relative;
+  transition:
+    color 0.25s,
+    border-color 0.25s;
+}
+.contact-section .email-row > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: #d1b6f0;
+  box-shadow: 0 0 12px #bf9ce966;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.contact-section .email-row > a:is(:hover, :focus-visible) {
+  color: #f0e1fc;
+  border-color: transparent;
+}
+.contact-section .email-row > a:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+.contact-section .email-row button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: linear-gradient(140deg, #bca3ed08, transparent);
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.contact-section .email-row button:is(:hover, :focus-visible) {
+  border-color: #bca3ed88;
+  background: #bca3ed14;
+  box-shadow: 0 0 22px #bca3ed0e;
+}
+.copy-button-icon {
+  display: grid;
+  place-items: center;
+}
+.contact-section .email-row[data-copy-state="copied"] button {
+  border-color: #a9c1a577;
+  color: #b9d5b5;
+  background: #a9c1a50c;
+  box-shadow: 0 0 20px #a9c1a50b;
+}
+.contact-section .email-row[data-copy-state="copied"] > a {
+  border-color: #a9c1a577;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-section .avatar-monogram::after {
+    animation: about-orbit 18s linear infinite;
+  }
+  .about-process::before {
+    animation: about-signal 5s linear infinite;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .about-process-node:hover {
+    translate: 0 -5px;
+    border-color: #bca3ed66;
+    box-shadow: 0 12px 28px #0003;
+  }
+  .about-process-node:hover > svg {
+    transform: rotate(-8deg) scale(1.1);
+  }
+  .about-copy .about-education:hover {
+    transform: perspective(1000px) translateY(-3px) rotateX(var(--tilt-x, 0deg))
+      rotateY(var(--tilt-y, 0deg));
+    border-color: #bca3ed66;
+    box-shadow: 0 18px 40px #0003;
+  }
+  .about-copy .about-education:hover > svg {
+    transform: translateY(-3px) rotate(-8deg);
+  }
+  .contact-section .contact-socials > :is(a, button):hover svg:first-child {
+    transform: translateY(-2px) rotate(-7deg);
+    color: #d1b6f0;
+  }
+  .contact-section .contact-socials > :is(a, button):hover svg:last-child {
+    transform: translate(3px, -3px);
+    color: #dfc5f9;
+  }
+}
+@keyframes about-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes about-signal {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (max-width: 650px) {
+  .about-process {
+    max-width: none;
+    gap: 9px;
+    margin-top: 28px;
+  }
+  .about-process-node {
+    padding: 20px 12px 14px;
+  }
+  .about-copy .about-education {
+    padding: 20px 16px;
+  }
+  .about-signature > div {
+    min-width: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-section .avatar-monogram::after,
+  .about-process::before {
+    animation: none;
+  }
+  .about-process-node,
+  .about-process-node > svg,
+  .about-copy .about-education,
+  .about-copy .about-education > svg,
+  .contact-section .contact-socials > :is(a, button),
+  .contact-section .contact-socials > :is(a, button)::before,
+  .contact-section .contact-socials > :is(a, button)::after,
+  .contact-section .contact-socials svg,
+  .contact-section .email-row > a,
+  .contact-section .email-row > a::after,
+  .contact-section .email-row button {
+    transition: none;
+    transform: none;
+  }
+}
