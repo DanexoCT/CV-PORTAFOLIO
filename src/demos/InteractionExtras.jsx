@@ -141,6 +141,7 @@ export function MagneticButton({ active = true }) {
   const reducedMotion = useReducedMotion();
   function reset() {
     cancelAnimationFrame(frame.current);
+    surface.current?.removeAttribute("data-attracted");
     surface.current?.style.setProperty("--magnet-x", "0px");
     surface.current?.style.setProperty("--magnet-y", "0px");
   }
@@ -172,6 +173,7 @@ export function MagneticButton({ active = true }) {
       ),
     );
     cancelAnimationFrame(frame.current);
+    surface.current?.setAttribute("data-attracted", "true");
     frame.current = requestAnimationFrame(() => {
       surface.current?.style.setProperty("--magnet-x", `${x * strength}px`);
       surface.current?.style.setProperty("--magnet-y", `${y * strength}px`);
@@ -190,15 +192,15 @@ export function MagneticButton({ active = true }) {
         </div>
       </div>
       <div className="demo-motion-layout">
-        <div className="magnetic-stage">
+        <div
+          className="magnetic-stage"
+          ref={stage}
+          onPointerMove={move}
+          onPointerLeave={reset}
+          onPointerCancel={reset}
+        >
           <span className="magnetic-orbit" aria-hidden="true" />
-          <div
-            ref={stage}
-            className="magnetic-hit-area"
-            onPointerMove={move}
-            onPointerLeave={reset}
-            onPointerCancel={reset}
-          >
+          <div className="magnetic-hit-area">
             <div ref={surface} className="magnetic-surface">
               <button
                 type="button"

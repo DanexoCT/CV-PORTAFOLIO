@@ -1,15 +1,22 @@
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  :is(a, button)[data-magnetic][data-magnetic] {
+  /* Preserve translate transitions above individual button skins. */
+  :root :is(a, button)[data-magnetic][data-magnetic] {
     translate: var(--magnetic-x, 0px) var(--magnetic-y, 0px);
     transition:
-      translate 0.28s cubic-bezier(0.2, 0.75, 0.25, 1),
+      translate var(--magnetic-duration, 2s)
+        var(--magnetic-ease, cubic-bezier(0.37, 0, 0.63, 1)),
       transform 0.25s ease,
       background 0.25s ease,
       border-color 0.25s ease,
       color 0.25s ease,
       box-shadow 0.25s ease;
   }
-  :is(a, button)[data-magnetic]:focus-visible {
+  :is(a, button)[data-magnetic][data-magnetic-active] {
+    --magnetic-duration: 0.24s;
+    --magnetic-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+  :root :is(a, button)[data-magnetic][data-magnetic]:focus-visible {
     translate: 0px 0px;
+    transition-duration: 0s;
   }
 }

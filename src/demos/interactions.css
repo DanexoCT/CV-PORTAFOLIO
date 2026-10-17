@@ -207,7 +207,11 @@
 }
 .magnetic-surface {
   transform: translate(var(--magnet-x, 0px), var(--magnet-y, 0px));
-  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition: transform 2s cubic-bezier(0.37, 0, 0.63, 1);
+}
+.magnetic-surface[data-attracted="true"] {
+  transition-duration: 0.24s;
+  transition-timing-function: cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 .frontend-demos .magnetic-button {
   min-width: 210px;
