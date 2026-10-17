@@ -1,5 +1,6 @@
 import { AnimatedDetails } from "../components/InterfaceMotion";
 import DemoSelect from "./DemoSelect";
+import "./workflow.css";
 import { useRef, useState } from "react";
 import {
   ArrowLeft,

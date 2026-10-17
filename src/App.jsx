@@ -12,6 +12,7 @@ import MouseGlow from "./components/MouseGlow";
 import Footer from "./components/Footer";
 import ScrollEffects from "./components/ScrollEffects";
 import "./mobile-compact.css";
+import "./mobile-performance.css";
 export default function App() {
   return (
     <>

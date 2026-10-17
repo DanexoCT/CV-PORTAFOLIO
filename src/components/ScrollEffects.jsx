@@ -71,6 +71,10 @@ export default function ScrollEffects() {
         heroArt.style.setProperty("--hero-parallax", `${offset}px`);
       }
       function scheduleParallax() {
+        if (window.innerWidth <= 800) {
+          heroArt?.style.removeProperty("--hero-parallax");
+          return;
+        }
         if (frame === null) frame = requestAnimationFrame(updateParallax);
       }
 

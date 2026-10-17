@@ -4,7 +4,7 @@ import {
   SmoothHeight,
 } from "../components/InterfaceMotion";
 import DemoSelect from "./DemoSelect";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import {
   AlertCircle,
@@ -24,13 +24,36 @@ import {
   ShoppingBag,
 } from "lucide-react";
 import SpotlightCard from "../components/SpotlightCard";
-import TaskDemo from "./TaskDemo";
-import FormDemo from "./FormDemo";
-import {
-  DesignComparison,
-  ExpandingGallery,
-  MagneticButton,
-} from "./InteractionExtras";
+const TaskDemo = lazy(() => import("./TaskDemo"));
+const FormDemo = lazy(() => import("./FormDemo"));
+const ExpandingGallery = lazy(() =>
+  import("./InteractionExtras").then((module) => ({
+    default: module.ExpandingGallery,
+  })),
+);
+const MagneticButton = lazy(() =>
+  import("./InteractionExtras").then((module) => ({
+    default: module.MagneticButton,
+  })),
+);
+const DesignComparison = lazy(() =>
+  import("./InteractionExtras").then((module) => ({
+    default: module.DesignComparison,
+  })),
+);
+function DeferredDemo({ children }) {
+  return (
+    <Suspense
+      fallback={
+        <p className="demo-chunk-loading" role="status">
+          Cargando demo...
+        </p>
+      }
+    >
+      {children}
+    </Suspense>
+  );
+}
 import {
   changeQuantity,
   filterProducts,
@@ -472,6 +495,20 @@ function MotionDemo() {
 export default function FrontendDemos() {
   const [active, setActive] = useState("catalogo");
   const [interaction, setInteraction] = useState("tilt");
+  const [visited, setVisited] = useState(() => new Set(["catalogo", "tilt"]));
+  function visit(id) {
+    setVisited((previous) =>
+      previous.has(id) ? previous : new Set([...previous, id]),
+    );
+  }
+  function selectTab(id) {
+    visit(id);
+    setActive(id);
+  }
+  function selectInteraction(id) {
+    visit(id);
+    setInteraction(id);
+  }
   const tabRefs = useRef([]);
   const tabs = [
     { id: "catalogo", label: "Catálogo", icon: ShoppingBag },
@@ -488,7 +525,7 @@ export default function FrontendDemos() {
     if (event.key === "End") next = tabs.length - 1;
     if (next === undefined) return;
     event.preventDefault();
-    setActive(tabs[next].id);
+    selectTab(tabs[next].id);
     tabRefs.current[next]?.focus();
   }
   return (
@@ -511,7 +548,7 @@ export default function FrontendDemos() {
             aria-controls={`demo-panel-${id}`}
             tabIndex={active === id ? 0 : -1}
             onKeyDown={(event) => navigateTabs(event, index)}
-            onClick={() => setActive(id)}
+            onClick={() => selectTab(id)}
           >
             <SelectionPill active={active === id} group="demo-main-tabs" />
             <Icon size={16} />
@@ -553,7 +590,7 @@ export default function FrontendDemos() {
                 type="button"
                 aria-pressed={interaction === item.id}
                 aria-controls={`interaction-${item.id}`}
-                onClick={() => setInteraction(item.id)}
+                onClick={() => selectInteraction(item.id)}
               >
                 <SelectionPill
                   active={interaction === item.id}
@@ -564,18 +601,30 @@ export default function FrontendDemos() {
             ))}
           </div>
           <div id="interaction-tilt" hidden={interaction !== "tilt"}>
-            <MotionDemo />
+            {visited.has("interaccion") && <MotionDemo />}
           </div>
           <div id="interaction-gallery" hidden={interaction !== "gallery"}>
-            <ExpandingGallery />
+            {visited.has("gallery") && (
+              <DeferredDemo>
+                <ExpandingGallery />
+              </DeferredDemo>
+            )}
           </div>
           <div id="interaction-magnet" hidden={interaction !== "magnet"}>
-            <MagneticButton
-              active={active === "interaccion" && interaction === "magnet"}
-            />
+            {visited.has("magnet") && (
+              <DeferredDemo>
+                <MagneticButton
+                  active={active === "interaccion" && interaction === "magnet"}
+                />
+              </DeferredDemo>
+            )}
           </div>
           <div id="interaction-compare" hidden={interaction !== "compare"}>
-            <DesignComparison />
+            {visited.has("compare") && (
+              <DeferredDemo>
+                <DesignComparison />
+              </DeferredDemo>
+            )}
           </div>
         </div>
         <div
@@ -585,7 +634,11 @@ export default function FrontendDemos() {
           aria-labelledby="demo-tab-tareas"
           hidden={active !== "tareas"}
         >
-          <TaskDemo />
+          {visited.has("tareas") && (
+            <DeferredDemo>
+              <TaskDemo />
+            </DeferredDemo>
+          )}
         </div>
         <div
           className="demo-panel"
@@ -594,7 +647,11 @@ export default function FrontendDemos() {
           aria-labelledby="demo-tab-formulario"
           hidden={active !== "formulario"}
         >
-          <FormDemo />
+          {visited.has("formulario") && (
+            <DeferredDemo>
+              <FormDemo />
+            </DeferredDemo>
+          )}
         </div>
       </SmoothHeight>
     </div>

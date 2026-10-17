@@ -1,4 +1,18 @@
-import { useEffect, useId, useRef, useState } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+
+const lightQuery = "(max-width: 650px), (pointer: coarse)";
+function subscribeLightweight(listener) {
+  const query = window.matchMedia(lightQuery);
+  query.addEventListener("change", listener);
+  return () => query.removeEventListener("change", listener);
+}
+const isLightweight = () => window.matchMedia(lightQuery).matches;
 
 // A static displacement map bends only the edges of the backdrop like a lens.
 function createLensMap(width, height) {
@@ -20,13 +34,18 @@ function createLensMap(width, height) {
 }
 
 export default function LiquidGlass({ className = "" }) {
+  const lightweight = useSyncExternalStore(
+    subscribeLightweight,
+    isLightweight,
+    () => false,
+  );
   const surface = useRef(null);
   const filterId = `liquid-glass-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const [size, setSize] = useState({ width: 1200, height: 76 });
 
   useEffect(() => {
     const element = surface.current;
-    if (!element) return;
+    if (!element || lightweight) return;
     const observer = new ResizeObserver(([entry]) => {
       const width = Math.max(1, Math.round(entry.contentRect.width));
       const height = Math.max(1, Math.round(entry.contentRect.height));
@@ -38,7 +57,7 @@ export default function LiquidGlass({ className = "" }) {
     });
     observer.observe(element);
     return () => observer.disconnect();
-  }, []);
+  }, [lightweight]);
 
   return (
     <div
@@ -46,45 +65,49 @@ export default function LiquidGlass({ className = "" }) {
       className={`liquid-glass-surface ${className}`}
       aria-hidden="true"
     >
-      <svg
-        className="glass-filter-definitions"
-        width="0"
-        height="0"
-        focusable="false"
-      >
-        <defs>
-          <filter
-            id={filterId}
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            colorInterpolationFilters="sRGB"
-          >
-            <feImage
-              href={createLensMap(size.width, size.height)}
+      {!lightweight && (
+        <svg
+          className="glass-filter-definitions"
+          width="0"
+          height="0"
+          focusable="false"
+        >
+          <defs>
+            <filter
+              id={filterId}
               x="0"
               y="0"
               width="100%"
               height="100%"
-              preserveAspectRatio="none"
-              result="lens"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="lens"
-              scale="22"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-          </filter>
-        </defs>
-      </svg>
+              colorInterpolationFilters="sRGB"
+            >
+              <feImage
+                href={createLensMap(size.width, size.height)}
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                preserveAspectRatio="none"
+                result="lens"
+              />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="lens"
+                scale="22"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
+      )}
       <span className="glass-backdrop" />
-      <span
-        className="glass-refraction"
-        style={{ "--glass-filter": `url("#${filterId}")` }}
-      />
+      {!lightweight && (
+        <span
+          className="glass-refraction"
+          style={{ "--glass-filter": `url("#${filterId}")` }}
+        />
+      )}
       <span className="glass-rim" />
     </div>
   );

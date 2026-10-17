@@ -1,0 +1,55 @@
+/* Keep touch devices on a lighter glass and compositing path. */
+@media (max-width: 650px), (pointer: coarse) {
+  :root .liquid-glass-surface .glass-refraction {
+    display: none;
+  }
+  :root .liquid-glass-surface .glass-backdrop {
+    -webkit-backdrop-filter: blur(8px) saturate(125%);
+    backdrop-filter: blur(8px) saturate(125%);
+  }
+  :root .liquid-glass-surface .glass-rim {
+    animation: none;
+  }
+  .scroll-reveal-ready[data-scroll-reveal] {
+    filter: none;
+    transition:
+      opacity 0.45s ease var(--reveal-delay, 0ms),
+      translate 0.5s ease var(--reveal-delay, 0ms),
+      scale 0.5s ease;
+  }
+  :root .demo-select-menu {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #211b2bf7;
+  }
+  :root .project-gallery {
+    backdrop-filter: none;
+    background: #17171ff7;
+  }
+  :root .project-gallery::backdrop {
+    backdrop-filter: none;
+  }
+  .experience-entry .experience-emblem::after {
+    animation-name: mobile-emblem-glow;
+    box-shadow: none;
+  }
+  :root .email-dialog::backdrop {
+    backdrop-filter: none;
+  }
+}
+@keyframes mobile-emblem-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}
+.demo-chunk-loading {
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  color: #bba9cf;
+  font-size: 12px;
+}

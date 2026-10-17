@@ -12,6 +12,37 @@
   user-select: none;
   border-radius: inherit;
 }
+.floating-shapes-light {
+  overflow: clip;
+}
+.floating-shape-lite {
+  position: absolute;
+  font:
+    22px/1 Consolas,
+    monospace;
+  color: #b89be433;
+  transform: rotate(var(--shape-angle));
+  animation: floating-lite var(--shape-duration, 22s) ease-in-out
+    var(--shape-delay, 0s) infinite alternate;
+  animation-play-state: paused;
+}
+.floating-shapes-light[data-animating] .floating-shape-lite {
+  animation-play-state: running;
+}
+@keyframes floating-lite {
+  from {
+    transform: translate3d(-5px, -8px, 0) rotate(var(--shape-angle));
+  }
+  to {
+    transform: translate3d(7px, 10px, 0)
+      rotate(calc(var(--shape-angle) + 12deg));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-shape-lite {
+    animation: none;
+  }
+}
 @media print, (forced-colors: active) {
   .floating-shapes-canvas {
     display: none;
