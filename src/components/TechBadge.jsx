@@ -36,7 +36,7 @@ const technologies = {
   MySQL: { asset: "mysql", color: "#73abc4" },
   SQL: { icon: Database, color: "#86bfdf" },
   MongoDB: { asset: "mongodb", color: "#78bc60" },
-  Linux: { asset: "linux", color: "#efca66" },
+  Linux: { asset: "linux", format: "webp", color: "#efca66" },
   Docker: { asset: "docker", color: "#55b1ef" },
   Git: { asset: "git", color: "#f07159" },
   GitHub: { asset: "github", color: "#dedbe8", monochrome: true },
@@ -58,6 +58,7 @@ const technologies = {
 export default function TechBadge({ name, variant = "badge" }) {
   const {
     asset,
+    format = "svg",
     icon: Icon = Code2,
     color = "#b49af6",
     monochrome,
@@ -70,7 +71,7 @@ export default function TechBadge({ name, variant = "badge" }) {
       <span className="tech-symbol" aria-hidden="true">
         {asset ? (
           <img
-            src={`${import.meta.env.BASE_URL}tech/${asset}.svg`}
+            src={`${import.meta.env.BASE_URL}tech/${asset}.${format}`}
             alt=""
             width="24"
             height="24"

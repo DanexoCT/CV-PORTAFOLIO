@@ -33,17 +33,25 @@ export default function ScrollEffects() {
         ];
       }
 
-      function register(node) {
-        collect(node).forEach((element) => {
-          if (elements.has(element)) return;
+      function register(nodes) {
+        const pending = [...new Set(nodes.flatMap(collect))].filter(
+          (element) => element.isConnected && !elements.has(element),
+        );
+        // Read all positions before changing classes or styles, avoiding
+        // a forced layout for each reveal target.
+        const viewportBottom = window.innerHeight * 0.94;
+        const positions = pending.map((element) => ({
+          element,
+          visible: element.getBoundingClientRect().top < viewportBottom,
+        }));
+        positions.forEach(({ element, visible }) => {
           elements.add(element);
           const order = Math.min(
             4,
             Math.max(0, Number(element.dataset.revealOrder) || 0),
           );
           element.style.setProperty("--reveal-delay", `${order * 85}ms`);
-          const bounds = element.getBoundingClientRect();
-          if (bounds.top < window.innerHeight * 0.94) {
+          if (visible) {
             element.classList.add("is-revealed");
           } else {
             element.classList.add("scroll-reveal-ready");
@@ -78,8 +86,9 @@ export default function ScrollEffects() {
         if (frame === null) frame = requestAnimationFrame(updateParallax);
       }
 
-      register(document.body);
+      register([document.body]);
       const mutations = new MutationObserver((records) => {
+        const added = [];
         records.forEach((record) => {
           record.removedNodes.forEach((node) =>
             collect(node).forEach((element) => {
@@ -87,8 +96,9 @@ export default function ScrollEffects() {
               elements.delete(element);
             }),
           );
-          record.addedNodes.forEach(register);
+          added.push(...record.addedNodes);
         });
+        register(added);
       });
       mutations.observe(document.getElementById("root"), {
         childList: true,

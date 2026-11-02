@@ -9,18 +9,11 @@ import {
   Braces,
   Database,
 } from "lucide-react";
-import { motion as Motion, useReducedMotion } from "motion/react";
 import TechBadge from "./TechBadge";
 export default function Hero() {
-  const reducedMotion = useReducedMotion();
   return (
     <section className="hero-section container" id="inicio">
-      <Motion.div
-        className="hero-copy"
-        initial={reducedMotion ? false : { opacity: 0, y: 22 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65 }}
-      >
+      <div className="hero-copy">
         <div className="availability">
           <span /> Abierto a oportunidades <i /> <b className="mono">2026</b>
         </div>
@@ -70,7 +63,7 @@ export default function Hero() {
           <strong>Icono Asesores</strong>
           <ArrowUpRight size={13} />
         </a>
-      </Motion.div>
+      </div>
       <div
         className="hero-art"
         aria-label="Ilustración de desarrollo e integración de sistemas"

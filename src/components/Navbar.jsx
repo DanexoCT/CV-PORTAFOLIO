@@ -1,10 +1,10 @@
 ﻿import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
-  motion as Motion,
   useReducedMotion,
   useScroll,
   useSpring,
 } from "motion/react";
+import * as Motion from "motion/react-m";
 import {
   ArrowUpRight,
   Terminal,

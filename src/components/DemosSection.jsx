@@ -1,4 +1,4 @@
-import "../demos/demos.css";
+import "./DemosSection.css";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Code2 } from "lucide-react";
 import LazyBoundary from "./LazyBoundary";

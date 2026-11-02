@@ -1,5 +1,6 @@
 import { Code2, Database, Workflow } from "lucide-react";
-import { motion as Motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as Motion from "motion/react-m";
 import SpotlightCard from "./SpotlightCard";
 import "./ProfileContact.css";
 import { ArrowUpRight, GraduationCap, MapPin } from "lucide-react";

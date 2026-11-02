@@ -1,5 +1,6 @@
 import { Children, useEffect, useId, useRef, useState } from "react";
-import { motion as Motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as Motion from "motion/react-m";
 import { ChevronDown } from "lucide-react";
 import "./InterfaceMotion.css";
 

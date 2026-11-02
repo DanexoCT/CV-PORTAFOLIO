@@ -1,5 +1,6 @@
 import { Collapsible, SelectionPill } from "./InterfaceMotion";
-import { motion as Motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
+import * as Motion from "motion/react-m";
 import { lazy, Suspense, useState } from "react";
 import {
   ArrowUpRight,
@@ -68,7 +69,14 @@ function ProjectVisual({ id, onOpenGallery }) {
         aria-label="Ver capturas del proyecto de Icono Asesores"
       >
         <img
-          src={`${import.meta.env.BASE_URL}projects/icono-redesign.jpg`}
+          src={`${import.meta.env.BASE_URL}projects/icono-redesign-640.webp`}
+          srcSet={[480, 640, 960]
+            .map(
+              (width) =>
+                `${import.meta.env.BASE_URL}projects/icono-redesign-${width}.webp ${width}w`,
+            )
+            .join(", ")}
+          sizes="(max-width: 580px) calc(100vw - 80px), (max-width: 1100px) 45vw, 520px"
           alt="Sección Portafolio de Servicios Web Icono con tarjetas de Desarrollo Web, Aplicaciones y Marketing"
           width="1191"
           height="687"

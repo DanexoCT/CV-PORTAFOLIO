@@ -4,6 +4,7 @@ import {
   SmoothHeight,
 } from "../components/InterfaceMotion";
 import DemoSelect from "./DemoSelect";
+import "./demos.css";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import {

@@ -1,11 +1,11 @@
 import { ArrowUpRight, BriefcaseBusiness, Code2, Workflow } from "lucide-react";
 import { useRef } from "react";
 import {
-  motion as Motion,
   useReducedMotion,
   useScroll,
   useSpring,
 } from "motion/react";
+import * as Motion from "motion/react-m";
 import TechBadge from "./TechBadge";
 import SpotlightCard from "./SpotlightCard";
 import "./Experience.css";

@@ -13,6 +13,7 @@ export default defineConfig({
       "react-dom",
       "react-dom/client",
       "motion/react",
+      "motion/react-m",
       "lucide-react",
     ],
   },

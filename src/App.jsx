@@ -1,5 +1,7 @@
 ﻿import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import { LazyMotion } from "motion/react";
+import { useLayoutEffect } from "react";
 import FloatingShapes from "./components/FloatingShapes";
 import MagneticButtons from "./components/MagneticButtons";
 import About from "./components/About";
@@ -13,9 +15,16 @@ import Footer from "./components/Footer";
 import ScrollEffects from "./components/ScrollEffects";
 import "./mobile-compact.css";
 import "./mobile-performance.css";
+const loadMotionFeatures = () =>
+  import("./utils/motionFeatures.js").then((module) => module.default);
 export default function App() {
+  // Reveal the committed UI immediately; decorative icons never block it.
+  useLayoutEffect(() => {
+    document.getElementById("site-loader")?.remove();
+    document.getElementById("site-loader-styles")?.remove();
+  }, []);
   return (
-    <>
+    <LazyMotion features={loadMotionFeatures} strict>
       <MouseGlow />
       <FloatingShapes />
       <MagneticButtons />
@@ -34,6 +43,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LazyMotion>
   );
 }

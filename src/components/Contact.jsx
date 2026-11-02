@@ -13,9 +13,9 @@ import EmailDialog from "./EmailDialog";
 import { useEffect } from "react";
 import {
   AnimatePresence,
-  motion as Motion,
   useReducedMotion,
 } from "motion/react";
+import * as Motion from "motion/react-m";
 import "./ProfileContact.css";
 export default function Contact() {
   const emailDialog = useRef(null);
