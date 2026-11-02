@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   motion as Motion,
   useReducedMotion,
@@ -6,8 +6,6 @@ import {
   useSpring,
 } from "motion/react";
 import {
-  Menu,
-  X,
   ArrowUpRight,
   Terminal,
   Code2,
@@ -17,6 +15,15 @@ import {
   Boxes,
 } from "lucide-react";
 import LiquidGlass from "./LiquidGlass";
+import "./Navbar.css";
+
+const compactQuery = "(max-width: 900px)";
+function subscribeCompact(listener) {
+  const query = window.matchMedia(compactQuery);
+  query.addEventListener("change", listener);
+  return () => query.removeEventListener("change", listener);
+}
+const getCompact = () => window.matchMedia(compactQuery).matches;
 
 const links = [
   { id: "experiencia", label: "Experiencia", icon: BriefcaseBusiness },
@@ -29,6 +36,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("inicio");
+  const compact = useSyncExternalStore(subscribeCompact, getCompact, () => false);
   const nav = useRef(null);
   const surface = useRef(null);
   const tiltFrame = useRef(null);
@@ -151,7 +159,7 @@ export default function Navbar() {
         onPointerLeave={resetTilt}
         onPointerCancel={resetTilt}
       >
-        <LiquidGlass />
+        <LiquidGlass refract={false} />
         <a
           className="brand nav-brand"
           href="#inicio"
@@ -169,11 +177,14 @@ export default function Navbar() {
         <div
           className={`nav-links ${open ? "is-open" : ""}`}
           id="navigation-links"
+          aria-hidden={compact && !open ? true : undefined}
+          inert={compact && !open}
         >
-          {open && <LiquidGlass className="mobile-liquid-glass" />}
-          {links.map(({ id, label, icon: Icon }) => (
+          <LiquidGlass className="mobile-liquid-glass" refract={false} />
+          {links.map(({ id, label, icon: Icon }, index) => (
             <a
               key={id}
+              style={{ "--nav-link-order": index }}
               href={`#${id}`}
               aria-current={active === id ? "location" : undefined}
               onClick={() => setOpen(false)}
@@ -195,6 +206,7 @@ export default function Navbar() {
           ))}
           <a
             className="nav-contact"
+            style={{ "--nav-link-order": links.length }}
             data-magnetic="5"
             href="#contacto"
             aria-current={active === "contacto" ? "location" : undefined}
@@ -208,14 +220,18 @@ export default function Navbar() {
           </a>
         </div>
         <button
+          type="button"
           className="menu-toggle"
           ref={toggle}
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           aria-controls="navigation-links"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((previous) => !previous)}
         >
-          {open ? <X /> : <Menu />}
+          <span className="menu-toggle-icon" aria-hidden="true">
+            <span />
+            <span />
+          </span>
         </button>
         <div className="nav-progress" aria-hidden="true">
           <Motion.div

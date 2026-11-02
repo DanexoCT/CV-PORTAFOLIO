@@ -155,6 +155,14 @@
   font: inherit;
   font-size: 12px;
 }
+.frontend-demos .demo-search:focus-within {
+  border-color: #bca3ed;
+  outline: 2px solid #bca3ed;
+  outline-offset: 3px;
+}
+.frontend-demos .demo-search input:focus {
+  outline: none;
+}
 .demo-sort select {
   height: 46px;
   max-width: 100%;

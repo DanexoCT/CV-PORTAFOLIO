@@ -33,19 +33,20 @@ function createLensMap(width, height) {
   return `data:image/svg+xml,${encodeURIComponent(map)}`;
 }
 
-export default function LiquidGlass({ className = "" }) {
+export default function LiquidGlass({ className = "", refract = true }) {
   const lightweight = useSyncExternalStore(
     subscribeLightweight,
     isLightweight,
     () => false,
   );
+  const refractionEnabled = refract && !lightweight;
   const surface = useRef(null);
   const filterId = `liquid-glass-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const [size, setSize] = useState({ width: 1200, height: 76 });
 
   useEffect(() => {
     const element = surface.current;
-    if (!element || lightweight) return;
+    if (!element || !refractionEnabled) return;
     const observer = new ResizeObserver(([entry]) => {
       const width = Math.max(1, Math.round(entry.contentRect.width));
       const height = Math.max(1, Math.round(entry.contentRect.height));
@@ -57,7 +58,7 @@ export default function LiquidGlass({ className = "" }) {
     });
     observer.observe(element);
     return () => observer.disconnect();
-  }, [lightweight]);
+  }, [refractionEnabled]);
 
   return (
     <div
@@ -65,7 +66,7 @@ export default function LiquidGlass({ className = "" }) {
       className={`liquid-glass-surface ${className}`}
       aria-hidden="true"
     >
-      {!lightweight && (
+      {refractionEnabled && (
         <svg
           className="glass-filter-definitions"
           width="0"
@@ -102,7 +103,7 @@ export default function LiquidGlass({ className = "" }) {
         </svg>
       )}
       <span className="glass-backdrop" />
-      {!lightweight && (
+      {refractionEnabled && (
         <span
           className="glass-refraction"
           style={{ "--glass-filter": `url("#${filterId}")` }}
