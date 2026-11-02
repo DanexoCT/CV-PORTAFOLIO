@@ -6,6 +6,7 @@ import {
   Code2,
   BriefcaseBusiness,
   Mail,
+  Phone,
 } from "lucide-react";
 import { useRef } from "react";
 import EmailDialog from "./EmailDialog";
@@ -38,7 +39,7 @@ export default function Contact() {
     <section id="contacto" className="section contact-section">
       <div className="container">
         <p className="eyebrow" data-scroll-reveal="rise">
-          <span>06 /</span> CORREO Y REDES
+          <span>06 /</span> CORREO, CELULAR Y REDES
         </p>
         <div className="contact-heading" data-scroll-reveal="zoom">
           <h2>Contacto</h2>
@@ -60,7 +61,7 @@ export default function Contact() {
         >
           <div>
             <p>
-              Puedes escribirme sobre una oportunidad de trabajo,
+              Puedes escribirme o llamarme sobre una oportunidad de trabajo,
               <br />
               un proyecto o alguna pregunta sobre mi experiencia.
             </p>
@@ -152,6 +153,18 @@ export default function Contact() {
             >
               <Mail size={17} /> Enviar correo <ArrowUpRight size={15} />
             </Motion.button>
+            <Motion.a
+              href="tel:+523329260035"
+              aria-label="Llamar al celular de Dan: +52 33 2926 0035"
+              data-magnetic="5"
+              initial={reducedMotion ? false : { opacity: 0, x: 14 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.45, delay: 0.24 }}
+            >
+              <Phone size={17} aria-hidden="true" /> +52 33 2926 0035{" "}
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </Motion.a>
           </div>
         </div>
       </div>

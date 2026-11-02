@@ -61,9 +61,10 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            Me gusta trabajar en la parte visual de una web y entender cómo
-            funciona lo que hay detrás. He participado tanto en el diseño de
-            interfaces como en tareas de backend e integración.
+            Mi especialidad es el desarrollo web, con especial interés en el
+            frontend. He participado en el diseño de interfaces y en tareas de
+            backend, bases de datos e integración, tanto durante mi formación
+            académica como en prácticas profesionales y colaboraciones.
           </Motion.p>
           <Motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 16 }}
@@ -71,9 +72,22 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Suelo aprender investigando y probando. También utilizo herramientas
-            de IA como apoyo para programar y depurar, revisando los resultados
-            antes de incorporarlos a un proyecto.
+            Utilizo Codex, Claude, Gemini y ChatGPT como apoyo para desarrollar y
+            depurar código, elaborar consultas a bases de datos, organizar tareas y
+            preparar documentación técnica. Reviso las propuestas y compruebo
+            su funcionamiento antes de incorporarlas a un proyecto.
+          </Motion.p>
+          <Motion.p
+            initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Durante mi formación también trabajé con TypeScript, Python y Vue,
+            y tuve un acercamiento al desarrollo Android con Java y Kotlin en
+            Android Studio. También desarrollé aplicaciones de escritorio con
+            Java en NetBeans. Esta familiaridad académica complementa mi
+            experiencia en desarrollo web.
           </Motion.p>
           <SpotlightCard
             className="education about-education"

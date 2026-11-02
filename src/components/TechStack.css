@@ -1,0 +1,49 @@
+#tecnologias .stack-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#tecnologias .section-heading > p {
+  max-width: 350px;
+}
+
+#tecnologias .stack-item h3 {
+  min-height: 0;
+  margin-bottom: 18px;
+}
+
+#tecnologias .stack-item {
+  border: 1px solid #47365380;
+}
+
+.stack-description {
+  margin-bottom: 20px;
+  color: #b9afc7;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.stack-group + .stack-group {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #a486c726;
+}
+
+.stack-group-label {
+  margin: 0 0 12px;
+  color: #c9b6dd;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  #tecnologias .stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  #tecnologias .stack-grid {
+    grid-template-columns: 1fr;
+  }
+}

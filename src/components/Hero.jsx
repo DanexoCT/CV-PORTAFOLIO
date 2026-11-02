@@ -34,9 +34,10 @@ export default function Hero() {
         </h1>
         <p className="hero-description">
           Estoy terminando la Ingeniería en Desarrollo y Gestión de Software
-          Multiplataforma en la Universidad Tecnológica de Jalisco. Me interesa
-          especialmente el <strong>frontend</strong> y he colaborado en
-          proyectos web y de <strong>automatización</strong>.
+          Multiplataforma en la Universidad Tecnológica de Jalisco. Mi
+          especialidad es el <strong>desarrollo web</strong>, con enfoque en
+          frontend, y he colaborado en proyectos web y de{" "}
+          <strong>automatización</strong>.
         </p>
         <div className="hero-actions">
           <a

@@ -5,6 +5,7 @@ import {
   MapPin,
   Code2,
   Check,
+  Phone,
 } from "lucide-react";
 
 const links = [
@@ -48,6 +49,15 @@ export default function Footer() {
             <p>
               <MapPin size={12} aria-hidden="true" />
               Guadalajara, México
+            </p>
+            <p>
+              <Phone size={12} aria-hidden="true" />
+              <a
+                href="tel:+523329260035"
+                aria-label="Llamar al celular de Dan: +52 33 2926 0035"
+              >
+                +52 33 2926 0035
+              </a>
             </p>
             <a
               className="footer-download"
