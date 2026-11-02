@@ -177,6 +177,7 @@ export default function Navbar() {
         <div
           className={`nav-links ${open ? "is-open" : ""}`}
           id="navigation-links"
+          style={{ "--nav-last-link": links.length }}
           aria-hidden={compact && !open ? true : undefined}
           inert={compact && !open}
         >
@@ -207,7 +208,7 @@ export default function Navbar() {
           <a
             className="nav-contact"
             style={{ "--nav-link-order": links.length }}
-            data-magnetic="5"
+            data-magnetic="0.8"
             href="#contacto"
             aria-current={active === "contacto" ? "location" : undefined}
             onClick={() => setOpen(false)}

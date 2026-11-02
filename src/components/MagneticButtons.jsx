@@ -31,6 +31,7 @@ export default function MagneticButtons() {
           .filter(
             (element) =>
               !element.matches(":disabled, [aria-disabled='true']") &&
+              !element.closest("[inert]") &&
               element.getClientRects().length,
           )
           .map((element) => {
@@ -54,6 +55,7 @@ export default function MagneticButtons() {
       const nearby = fields.filter(
         (field) =>
           field.element.isConnected &&
+          !field.element.closest("[inert]") &&
           x >= field.left - reach &&
           x <= field.right + reach &&
           y >= field.top - reach &&
@@ -112,8 +114,14 @@ export default function MagneticButtons() {
     }
     const observer = new MutationObserver(() => {
       fields = null;
+      if (active?.closest("[inert]")) reset();
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["inert"],
+    });
     document.addEventListener("pointermove", move, { passive: true });
     document.addEventListener("pointerout", leave);
     document.addEventListener("focusin", focus);
