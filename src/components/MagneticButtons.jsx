@@ -25,7 +25,6 @@ export default function MagneticButtons() {
         return;
       }
       const { clientX: x, clientY: y } = event;
-      const reach = 48;
       if (!fields) {
         fields = [...document.querySelectorAll("[data-magnetic]")]
           .filter(
@@ -40,8 +39,12 @@ export default function MagneticButtons() {
             const translation = getComputedStyle(element).translate.split(" ");
             const dx = parseFloat(translation[0]) || 0;
             const dy = parseFloat(translation[1]) || 0;
+            const configuredReach = Number(element.dataset.magneticReach);
             return {
               element,
+              reach: Number.isFinite(configuredReach)
+                ? Math.max(0, configuredReach)
+                : 48,
               left: rect.left - dx,
               right: rect.right - dx,
               top: rect.top - dy,
@@ -56,10 +59,10 @@ export default function MagneticButtons() {
         (field) =>
           field.element.isConnected &&
           !field.element.closest("[inert]") &&
-          x >= field.left - reach &&
-          x <= field.right + reach &&
-          y >= field.top - reach &&
-          y <= field.bottom + reach,
+          x >= field.left - field.reach &&
+          x <= field.right + field.reach &&
+          y >= field.top - field.reach &&
+          y <= field.bottom + field.reach,
       );
       nearby.sort(
         (a, b) =>
@@ -79,6 +82,7 @@ export default function MagneticButtons() {
         active = field.element;
       }
       const bounds = field;
+      const reach = field.reach;
       active.setAttribute("data-magnetic-active", "true");
       const strength = Math.min(
         70,

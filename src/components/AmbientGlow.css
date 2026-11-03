@@ -1,0 +1,73 @@
+/* Lift with translate so hover and Motion keep control of transforms. */
+:is(.tech-badge, .about-process-node, .stack-icon) {
+  position: relative;
+  --ambient-order: 0;
+}
+
+:is(.tech-badge, .about-process-node, .stack-icon)::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--tech-color, #bca3ed) 65%, transparent);
+  background: color-mix(in srgb, var(--tech-color, #bca3ed) 7%, transparent);
+  box-shadow:
+    inset 0 0 18px color-mix(in srgb, var(--tech-color, #bca3ed) 9%, transparent),
+    0 0 14px color-mix(in srgb, var(--tech-color, #bca3ed) 12%, transparent);
+  opacity: 0;
+}
+
+:is(.tech-badge, .about-process-node):nth-child(2) { --ambient-order: 1; }
+:is(.tech-badge, .about-process-node):nth-child(3) { --ambient-order: 2; }
+.tech-badge:nth-child(4) { --ambient-order: 3; }
+.tech-badge:nth-child(5) { --ambient-order: 4; }
+.tech-badge:nth-child(6) { --ambient-order: 5; }
+.tech-badge:nth-child(7) { --ambient-order: 6; }
+.stack-item:nth-child(3n + 2) .stack-icon { --ambient-order: 1; }
+.stack-item:nth-child(3n + 3) .stack-icon { --ambient-order: 2; }
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.tech-badge, .about-process-node, .stack-icon),
+  :is(.tech-badge, .about-process-node, .stack-icon)::after {
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: calc(var(--ambient-order) * 0.75s);
+    animation-play-state: paused;
+  }
+
+  :is(.tech-badge, .about-process-node, .stack-icon) {
+    animation-name: ambient-lift;
+  }
+
+  :is(.tech-badge, .about-process-node, .stack-icon)::after {
+    animation-name: ambient-breathe;
+  }
+
+  .ambient-glow-visible > :is(.tech-badge, .about-process-node, .stack-icon),
+  .ambient-glow-visible > :is(.tech-badge, .about-process-node, .stack-icon)::after {
+    animation-play-state: running;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :is(.tech-badge, .about-process-node, .stack-icon):hover {
+    animation: none;
+  }
+
+  :is(.tech-badge, .about-process-node, .stack-icon):hover::after {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+@keyframes ambient-breathe {
+  0%, 38%, 100% { opacity: 0; }
+  16% { opacity: 0.85; }
+}
+
+@keyframes ambient-lift {
+  0%, 38%, 100% { translate: 0 0; }
+  16% { translate: 0 -4px; }
+}

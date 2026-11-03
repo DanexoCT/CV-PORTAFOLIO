@@ -35,7 +35,8 @@ export default function Hero() {
           <a
             href="#proyectos"
             className="button button-primary"
-            data-magnetic="10"
+            data-magnetic="4"
+            data-magnetic-reach="16"
           >
             Ver proyectos <ArrowUpRight size={18} />
           </a>
@@ -43,7 +44,8 @@ export default function Hero() {
             href={`${import.meta.env.BASE_URL}cv.pdf`}
             download="CV_Dan_Alejandro_Valle_Mendoza.pdf"
             className="button button-secondary"
-            data-magnetic="8"
+            data-magnetic="3"
+            data-magnetic-reach="16"
           >
             <Download size={17} /> Descargar CV
           </a>

@@ -4,6 +4,7 @@ import { LazyMotion } from "motion/react";
 import { useLayoutEffect } from "react";
 import FloatingShapes from "./components/FloatingShapes";
 import MagneticButtons from "./components/MagneticButtons";
+import AmbientGlow from "./components/AmbientGlow";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import DemosSection from "./components/DemosSection";
@@ -28,6 +29,7 @@ export default function App() {
       <MouseGlow />
       <FloatingShapes />
       <MagneticButtons />
+      <AmbientGlow />
       <ScrollEffects />
       <a className="skip-link" href="#contenido">
         Saltar al contenido
