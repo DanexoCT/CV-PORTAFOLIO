@@ -39,7 +39,13 @@
     box-shadow: none;
   }
   :root .email-dialog::backdrop {
-    backdrop-filter: none;
+    -webkit-backdrop-filter: blur(4px) saturate(80%);
+    backdrop-filter: blur(4px) saturate(80%);
+  }
+  /* Preserve the navbar's glass finish in the email dialog on touch devices. */
+  :root .email-dialog .email-liquid-glass .glass-backdrop {
+    -webkit-backdrop-filter: blur(14px) saturate(170%);
+    backdrop-filter: blur(14px) saturate(170%);
   }
 }
 @keyframes mobile-emblem-glow {

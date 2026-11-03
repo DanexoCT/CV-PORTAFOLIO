@@ -131,7 +131,7 @@ export default function EmailDialog({ dialogRef }) {
       onPointerLeave={resetTilt}
       onPointerCancel={resetTilt}
     >
-      <LiquidGlass className="email-liquid-glass" />
+      <LiquidGlass className="email-liquid-glass" refract={false} />
       <div className="email-dialog-content">
         <button
           className="email-dialog-close"
