@@ -63,9 +63,10 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             Mi especialidad es el desarrollo web, con especial interés en el
-            frontend. He participado en el diseño de interfaces y en tareas de
-            backend, bases de datos e integración, tanto durante mi formación
-            académica como en prácticas profesionales y colaboraciones.
+            frontend. Tengo experiencia sólida con React, JavaScript, HTML5 y
+            CSS3 para interfaces, y con PHP, Laravel y MySQL para backend y bases
+            de datos. He aplicado estas tecnologías durante mi formación,
+            prácticas profesionales y colaboraciones.
           </Motion.p>
           <Motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 16 }}
@@ -84,11 +85,10 @@ export default function About() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Durante mi formación también trabajé con TypeScript, Python y Vue,
-            y tuve un acercamiento al desarrollo Android con Java y Kotlin en
-            Android Studio. También desarrollé aplicaciones de escritorio con
-            Java en NetBeans. Esta familiaridad académica complementa mi
-            experiencia en desarrollo web.
+            Como experiencia complementaria, he utilizado Node.js y Express y
+            desarrollado aplicaciones Android con Kotlin en Android Studio. Mi
+            experiencia con Java para Android es básica. También he participado
+            en tareas de APIs e integración de sistemas.
           </Motion.p>
           <SpotlightCard
             className="education about-education"

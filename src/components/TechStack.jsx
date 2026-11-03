@@ -10,12 +10,8 @@ const stack = [
     label: "FRONTEND",
     groups: [
       {
-        label: "Experiencia práctica",
-        tools: ["React", "JavaScript", "HTML5", "CSS3"],
-      },
-      {
-        label: "Formación académica",
-        tools: ["TypeScript", "Vue"],
+        label: "Experiencia sólida",
+        tools: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
       },
     ],
   },
@@ -25,12 +21,12 @@ const stack = [
     label: "BACKEND",
     groups: [
       {
-        label: "Experiencia práctica",
-        tools: ["PHP", "Laravel", "SQL", "MySQL"],
+        label: "Experiencia sólida",
+        tools: ["PHP", "Laravel", "MySQL"],
       },
       {
-        label: "Formación académica",
-        tools: ["Node.js", "Express", "Python", "MongoDB"],
+        label: "Experiencia previa",
+        tools: ["Node.js", "Express", "MongoDB", "Python"],
       },
     ],
   },
@@ -40,8 +36,12 @@ const stack = [
     label: "AUTOMATIZACIÓN",
     groups: [
       {
-        label: "Experiencia práctica",
-        tools: ["n8n", "APIs", "Integración de sistemas"],
+        label: "Experiencia complementaria",
+        tools: ["APIs", "Integración de sistemas"],
+      },
+      {
+        label: "Experiencia previa",
+        tools: ["n8n"],
       },
     ],
   },
@@ -51,12 +51,12 @@ const stack = [
     label: "INFRAESTRUCTURA",
     groups: [
       {
-        label: "Experiencia práctica",
-        tools: ["Linux", "Docker", "Git", "GitHub"],
+        label: "Uso frecuente",
+        tools: ["Git", "GitHub", "VirtualBox"],
       },
       {
-        label: "Formación académica",
-        tools: ["Apache", "VirtualBox"],
+        label: "Experiencia previa",
+        tools: ["Linux", "Docker"],
       },
     ],
   },
@@ -68,21 +68,21 @@ const stack = [
       "Apoyo para desarrollar, depurar y revisar código, elaborar consultas a bases de datos, organizar tareas y documentar proyectos. Reviso y valido los resultados antes de integrarlos.",
     groups: [
       {
-        label: "Experiencia práctica",
+        label: "Uso frecuente",
         tools: ["Codex", "Claude", "Gemini", "ChatGPT"],
       },
     ],
   },
   {
     icon: Smartphone,
-    title: "Aplicaciones móviles y de escritorio",
-    label: "MULTIPLATAFORMA",
+    title: "Aplicaciones Android",
+    label: "DESARROLLO MÓVIL",
     description:
-      "Familiaridad académica con Java y NetBeans para aplicaciones de escritorio, y con Java y Kotlin en Android Studio para Android.",
+      "Experiencia en desarrollo Android con Kotlin en Android Studio, como complemento a mi especialidad en desarrollo web.",
     groups: [
       {
-        label: "Formación académica",
-        tools: ["Java", "NetBeans", "Kotlin", "Android Studio"],
+        label: "Experiencia previa",
+        tools: ["Kotlin", "Android Studio", "Java"],
       },
     ],
   },
@@ -100,9 +100,9 @@ export default function TechStack() {
             <h2>Tecnologías que utilizo</h2>
           </div>
           <p>
-            Mi especialidad es el desarrollo web. Distingo las herramientas que
-            uso fuera del aula de aquellas con las que tengo familiaridad por mi
-            formación académica.
+            Mi fuerte es el desarrollo web con React, JavaScript, PHP, Laravel y
+            MySQL. Las herramientas se agrupan según mi experiencia y frecuencia
+            de uso.
           </p>
         </div>
         <div className="stack-grid">

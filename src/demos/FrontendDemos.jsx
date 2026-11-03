@@ -5,7 +5,14 @@ import {
 } from "../components/InterfaceMotion";
 import DemoSelect from "./DemoSelect";
 import "./demos.css";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { useReducedMotion } from "motion/react";
 import {
   AlertCircle,
@@ -493,8 +500,19 @@ function MotionDemo() {
   );
 }
 
+const mobileQuery = "(max-width: 650px)";
+function subscribeMobile(listener) {
+  const query = window.matchMedia(mobileQuery);
+  query.addEventListener("change", listener);
+  return () => query.removeEventListener("change", listener);
+}
+const getMobile = () => window.matchMedia(mobileQuery).matches;
+
 export default function FrontendDemos() {
+  const mobile = useSyncExternalStore(subscribeMobile, getMobile, () => false);
   const [active, setActive] = useState("catalogo");
+  const displayActive =
+    mobile && active === "interaccion" ? "catalogo" : active;
   const [interaction, setInteraction] = useState("tilt");
   const [visited, setVisited] = useState(() => new Set(["catalogo", "tilt"]));
   function visit(id) {
@@ -516,7 +534,7 @@ export default function FrontendDemos() {
     { id: "interaccion", label: "Interacción", icon: MousePointer2 },
     { id: "tareas", label: "Tablero", icon: Check },
     { id: "formulario", label: "Formulario", icon: Code2 },
-  ];
+  ].filter((tab) => !mobile || tab.id !== "interaccion");
   function navigateTabs(event, index) {
     let next;
     if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
@@ -545,13 +563,16 @@ export default function FrontendDemos() {
             type="button"
             role="tab"
             id={`demo-tab-${id}`}
-            aria-selected={active === id}
+            aria-selected={displayActive === id}
             aria-controls={`demo-panel-${id}`}
-            tabIndex={active === id ? 0 : -1}
+            tabIndex={displayActive === id ? 0 : -1}
             onKeyDown={(event) => navigateTabs(event, index)}
             onClick={() => selectTab(id)}
           >
-            <SelectionPill active={active === id} group="demo-main-tabs" />
+            <SelectionPill
+              active={displayActive === id}
+              group="demo-main-tabs"
+            />
             <Icon size={16} />
             {label}
           </button>
@@ -564,76 +585,80 @@ export default function FrontendDemos() {
           role="tabpanel"
           id="demo-panel-catalogo"
           aria-labelledby="demo-tab-catalogo"
-          hidden={active !== "catalogo"}
+          hidden={displayActive !== "catalogo"}
         >
           <CatalogDemo />
         </div>
-        <div
-          className="demo-panel"
-          role="tabpanel"
-          id="demo-panel-interaccion"
-          aria-labelledby="demo-tab-interaccion"
-          hidden={active !== "interaccion"}
-        >
+        {!mobile && (
           <div
-            className="interaction-picker"
-            role="group"
-            aria-label="Seleccionar demo de interacción"
+            className="demo-panel"
+            role="tabpanel"
+            id="demo-panel-interaccion"
+            aria-labelledby="demo-tab-interaccion"
+            hidden={active !== "interaccion"}
           >
-            {[
-              { id: "tilt", label: "Inclinación" },
-              { id: "gallery", label: "Galería expandible" },
-              { id: "magnet", label: "Botón magnético" },
-              { id: "compare", label: "Comparador" },
-            ].map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={interaction === item.id}
-                aria-controls={`interaction-${item.id}`}
-                onClick={() => selectInteraction(item.id)}
-              >
-                <SelectionPill
-                  active={interaction === item.id}
-                  group="demo-interaction-tabs"
-                />
-                {item.label}
-              </button>
-            ))}
+            <div
+              className="interaction-picker"
+              role="group"
+              aria-label="Seleccionar demo de interacción"
+            >
+              {[
+                { id: "tilt", label: "Inclinación" },
+                { id: "gallery", label: "Galería expandible" },
+                { id: "magnet", label: "Botón magnético" },
+                { id: "compare", label: "Comparador" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-pressed={interaction === item.id}
+                  aria-controls={`interaction-${item.id}`}
+                  onClick={() => selectInteraction(item.id)}
+                >
+                  <SelectionPill
+                    active={interaction === item.id}
+                    group="demo-interaction-tabs"
+                  />
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <div id="interaction-tilt" hidden={interaction !== "tilt"}>
+              {visited.has("interaccion") && <MotionDemo />}
+            </div>
+            <div id="interaction-gallery" hidden={interaction !== "gallery"}>
+              {visited.has("gallery") && (
+                <DeferredDemo>
+                  <ExpandingGallery />
+                </DeferredDemo>
+              )}
+            </div>
+            <div id="interaction-magnet" hidden={interaction !== "magnet"}>
+              {visited.has("magnet") && (
+                <DeferredDemo>
+                  <MagneticButton
+                    active={
+                      active === "interaccion" && interaction === "magnet"
+                    }
+                  />
+                </DeferredDemo>
+              )}
+            </div>
+            <div id="interaction-compare" hidden={interaction !== "compare"}>
+              {visited.has("compare") && (
+                <DeferredDemo>
+                  <DesignComparison />
+                </DeferredDemo>
+              )}
+            </div>
           </div>
-          <div id="interaction-tilt" hidden={interaction !== "tilt"}>
-            {visited.has("interaccion") && <MotionDemo />}
-          </div>
-          <div id="interaction-gallery" hidden={interaction !== "gallery"}>
-            {visited.has("gallery") && (
-              <DeferredDemo>
-                <ExpandingGallery />
-              </DeferredDemo>
-            )}
-          </div>
-          <div id="interaction-magnet" hidden={interaction !== "magnet"}>
-            {visited.has("magnet") && (
-              <DeferredDemo>
-                <MagneticButton
-                  active={active === "interaccion" && interaction === "magnet"}
-                />
-              </DeferredDemo>
-            )}
-          </div>
-          <div id="interaction-compare" hidden={interaction !== "compare"}>
-            {visited.has("compare") && (
-              <DeferredDemo>
-                <DesignComparison />
-              </DeferredDemo>
-            )}
-          </div>
-        </div>
+        )}
         <div
           className="demo-panel"
           role="tabpanel"
           id="demo-panel-tareas"
           aria-labelledby="demo-tab-tareas"
-          hidden={active !== "tareas"}
+          hidden={displayActive !== "tareas"}
         >
           {visited.has("tareas") && (
             <DeferredDemo>
@@ -646,7 +671,7 @@ export default function FrontendDemos() {
           role="tabpanel"
           id="demo-panel-formulario"
           aria-labelledby="demo-tab-formulario"
-          hidden={active !== "formulario"}
+          hidden={displayActive !== "formulario"}
         >
           {visited.has("formulario") && (
             <DeferredDemo>

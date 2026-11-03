@@ -12,19 +12,15 @@
   Smartphone,
   Coffee,
   Sparkles,
-  Server,
   MessageSquare,
 } from "lucide-react";
 
 const technologies = {
   React: { asset: "react", color: "#61dafb" },
   JavaScript: { asset: "javascript", color: "#f7df1e" },
-  TypeScript: { icon: Braces, color: "#66b0f2" },
-  Vue: { icon: Code2, color: "#67c99e" },
+  "Tailwind CSS": { icon: Code2, color: "#38bdf8" },
   Python: { icon: Code2, color: "#edca69" },
   Java: { icon: Coffee, color: "#e6a16e" },
-  NetBeans: { icon: Boxes, color: "#8bbce8" },
-  Apache: { icon: Server, color: "#df879f" },
   Kotlin: { icon: Code2, color: "#bb95fa" },
   "Android Studio": { icon: Smartphone, color: "#85d5a0" },
   HTML5: { asset: "html5", color: "#e56a43" },

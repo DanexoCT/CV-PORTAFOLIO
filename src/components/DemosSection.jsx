@@ -53,10 +53,7 @@ export default function DemosSection() {
           </p>
           <h2>Demos de interfaz</h2>
         </div>
-        <p>
-          Prueba interfaces, efectos de interacción, un tablero de tareas y un
-          formulario por pasos. Con datos de muestra.
-        </p>
+        <p>demos con datos de muestra y prueba de controles.</p>
       </div>
       {active ? (
         <LazyBoundary>

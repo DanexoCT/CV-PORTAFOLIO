@@ -21,16 +21,15 @@ export default function Hero() {
           <span className="hero-name">DAN ALEJANDRO VALLE MENDOZA</span>
         </p>
         <h1>
-          Desarrollo web
+          Desarrollador
           <br />
-          <span>y automatización</span>
+          <span>web</span>
         </h1>
         <p className="hero-description">
           Estoy terminando la Ingeniería en Desarrollo y Gestión de Software
           Multiplataforma en la Universidad Tecnológica de Jalisco. Mi
           especialidad es el <strong>desarrollo web</strong>, con enfoque en
-          frontend, y he colaborado en proyectos web y de{" "}
-          <strong>automatización</strong>.
+          frontend y experiencia en backend con <strong>PHP y Laravel</strong>.
         </p>
         <div className="hero-actions">
           <a
@@ -50,13 +49,13 @@ export default function Hero() {
           </a>
         </div>
         <div className="hero-specialties" aria-label="Tecnologías principales">
-          {["React", "JavaScript", "Laravel", "n8n"].map((name) => (
+          {["React", "JavaScript", "Laravel", "MySQL"].map((name) => (
             <TechBadge key={name} name={name} />
           ))}
         </div>
         <p className="hero-location">
-          <MapPin size={14} /> Guadalajara, Jalisco, México <span>·</span> Web &
-          automatización
+          <MapPin size={14} /> Guadalajara, Jalisco, México <span>·</span> Frontend
+          y backend
         </p>
         <a className="hero-experience-link" href="#experiencia">
           Experiencia en <strong>Wendy</strong> e{" "}
