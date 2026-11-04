@@ -31,21 +31,6 @@ const stack = [
     ],
   },
   {
-    icon: Workflow,
-    title: "Flujos e integraciones",
-    label: "AUTOMATIZACIÓN",
-    groups: [
-      {
-        label: "Experiencia complementaria",
-        tools: ["APIs", "Integración de sistemas"],
-      },
-      {
-        label: "Experiencia previa",
-        tools: ["n8n"],
-      },
-    ],
-  },
-  {
     icon: Server,
     title: "Entornos y versionado",
     label: "INFRAESTRUCTURA",
@@ -57,6 +42,21 @@ const stack = [
       {
         label: "Experiencia previa",
         tools: ["Linux", "Docker"],
+      },
+    ],
+  },
+  {
+    icon: Workflow,
+    title: "Flujos e integraciones",
+    label: "AUTOMATIZACIÓN",
+    groups: [
+      {
+        label: "Experiencia complementaria",
+        tools: ["APIs", "Integración de sistemas"],
+      },
+      {
+        label: "Experiencia previa",
+        tools: ["n8n"],
       },
     ],
   },
